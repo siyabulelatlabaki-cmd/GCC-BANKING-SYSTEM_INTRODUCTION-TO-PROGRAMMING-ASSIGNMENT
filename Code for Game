@@ -1,0 +1,37 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    // Seed the random number generator
+    srand(time(0));
+    int secretNumber = rand() % 100 + 1; // Random number between 1 and 100
+    int guess;
+    int maxTries = 6;
+
+    cout << "Welcome to the Number Guessing Game!" << endl;
+    cout << "I have picked a number between 1 and 100." << endl;
+    cout << "You have " << maxTries << " tries to guess it." << endl << endl;
+
+    for (int attempt = 1; attempt <= maxTries; attempt++) {
+        cout << "Attempt " << attempt << " of " << maxTries << " - Enter your guess: ";
+        cin >> guess;
+
+        if (guess == secretNumber) {
+            cout << "Congratulations! You guessed the number in " << attempt << " tries!" << endl;
+            return 0; // End the program early since the player won
+        } 
+        else if (guess < secretNumber) {
+            cout << "Too low!" << endl << endl;
+        } 
+        else {
+            cout << "Too high!" << endl << endl;
+        }
+    }
+
+    // If the loop finishes without a correct guess
+    cout << "Game Over! You've used all " << maxTries << " tries." << endl;
+    cout << "The secret number was: " << secretNumber << endl;
+
+    return 0;
+}
